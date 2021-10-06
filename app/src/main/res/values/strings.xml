@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">SelectActivity</string>
+    <string-array name="breeds">
+        <item>Australian Shepherd</item>
+        <item>Retriever flat-coated</item>
+        <item>Chow-Chow</item>
+        <item>Corgi</item>
+        <item>Eskimo</item>
+        <item>Golden Retrieve</item>
+        <item>Husky</item>
+        <item>Saluki</item>
+        <item>Samoyed</item>
+        <item>Shiba</item>
+    </string-array>
+    <string-array name="descriptions">
+        <item>A medium-sized worker with a keen, penetrating gaze in the eye.</item>
+        <item>Even-tempered, intelligent and affectionate.</item>
+        <item>The lion of dogs.</item>
+        <item>A comfort rug with a heartbeat.</item>
+        <item>Looks like a wolf.</item>
+        <item>Furball of happiness.</item>
+        <item>A talented singer.</item>
+        <item>Utterly cute and innocent.</item>
+        <item>A natural cuddle bag.</item>
+        <item>Small but mighty.</item>
+    </string-array>
 </resources>
