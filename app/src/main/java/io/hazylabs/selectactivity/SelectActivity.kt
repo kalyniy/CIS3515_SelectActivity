@@ -1,7 +1,9 @@
 package io.hazylabs.selectactivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Display
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -38,9 +40,16 @@ class SelectActivity : AppCompatActivity() {
         recyclerView.layoutManager = GridLayoutManager(this, 3)
 
         val onClickListener = View.OnClickListener {
-            val itemPosition = recyclerView.getChildAdapterPosition(it)
+            val index = recyclerView.getChildAdapterPosition(it)
+            val selectedImage = items[index];
+            val displayActivity = DisplayActivity()
+            val intent = Intent(this, DisplayActivity::class.java)
+            intent.putExtra("extra_image", selectedImage as java.io.Serializable);
+            startActivity(intent)
+            /*
             imageView.setImageResource(items[itemPosition].id)
             textView.text = items[itemPosition].description
+            */
         }
 
         recyclerView.adapter = ImageAdapter(items, onClickListener)
