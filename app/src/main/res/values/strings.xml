@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SelectActivity</string>
+    <string name="app_name">Dog Image Viewer App</string>
     <string-array name="breeds">
         <item>Australian Shepherd</item>
         <item>Retriever flat-coated</item>

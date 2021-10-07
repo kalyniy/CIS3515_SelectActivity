@@ -45,4 +45,6 @@ class SelectActivity : AppCompatActivity() {
 
         recyclerView.adapter = ImageAdapter(items, onClickListener)
     }
+
+
 }
