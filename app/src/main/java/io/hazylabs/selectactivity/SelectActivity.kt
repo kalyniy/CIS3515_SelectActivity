@@ -34,7 +34,6 @@ class SelectActivity : AppCompatActivity() {
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val imageView = findViewById<ImageView>(R.id.imageView)
         val textView = findViewById<TextView>(R.id.textView)
 
         recyclerView.layoutManager = GridLayoutManager(this, 3)
