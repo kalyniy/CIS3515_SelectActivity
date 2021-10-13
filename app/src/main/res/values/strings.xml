@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Dog Image Viewer App</string>
+    <string name= "hint">Click an image above to view</string>
     <string-array name="breeds">
         <item>Australian Shepherd</item>
         <item>Retriever flat-coated</item>
