@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import kotlin.collections.ArrayList
 
 val ids: IntArray = intArrayOf(  R.drawable.australian,
     R.drawable.blackretriever,
@@ -24,12 +26,18 @@ class SelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val txtHint = findViewById<TextView>(R.id.textViewHint)
-        txtHint.text = resources.getString(R.string.hint)
+        var language = Locale.getDefault().getLanguage()
 
+        val txtHint = findViewById<TextView>(R.id.textViewHint)
+
+        txtHint.text = resources.getString(R.string.hint)
         var names = resources.getStringArray(R.array.breeds);
         var descriptions = resources.getStringArray(R.array.descriptions);
-
+        if(language == "fr")
+        {
+            txtHint.text = resources.getString(R.string.hint_fr)
+            names = resources.getStringArray(R.array.breeds_fr)
+        }
         var items: ArrayList<ImageObject> = ArrayList()
         for (i in ids.indices) {
             var item = ImageObject(ids[i], names[i], descriptions[i])
@@ -48,6 +56,7 @@ class SelectActivity : AppCompatActivity() {
             val intent = Intent(this, DisplayActivity::class.java)
             intent.putExtra("extra_image", selectedImage as java.io.Serializable);
             startActivity(intent)
+
             /*
             imageView.setImageResource(items[itemPosition].id)
             textView.text = items[itemPosition].description
