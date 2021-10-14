@@ -37,6 +37,8 @@ class SelectActivity : AppCompatActivity() {
         {
             txtHint.text = resources.getString(R.string.hint_fr)
             names = resources.getStringArray(R.array.breeds_fr)
+            descriptions = resources.getStringArray(R.array.descriptions_fr);
+            supportActionBar!!.title = resources.getString(R.string.app_name_fr)
         }
         var items: ArrayList<ImageObject> = ArrayList()
         for (i in ids.indices) {
@@ -57,10 +59,6 @@ class SelectActivity : AppCompatActivity() {
             intent.putExtra("extra_image", selectedImage as java.io.Serializable);
             startActivity(intent)
 
-            /*
-            imageView.setImageResource(items[itemPosition].id)
-            textView.text = items[itemPosition].description
-            */
         }
 
         recyclerView.adapter = ImageAdapter(items, onClickListener)
