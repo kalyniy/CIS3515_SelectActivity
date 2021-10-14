@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Dog Image Viewer App</string>
     <string name="app_name_fr">Application de visualisation d\'images de chien</string>
+    <string name="app_theme">Dog Breeds</string>
+    <string name="app_theme_fr">Races de chiens</string>
     <string name= "hint">Click an image below to view</string>
     <string name= "hint_fr">Cliquez sur une image ci dessous pour voir</string>
     <string-array name="breeds">

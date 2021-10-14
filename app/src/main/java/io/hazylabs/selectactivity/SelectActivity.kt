@@ -27,14 +27,16 @@ class SelectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var language = Locale.getDefault().getLanguage()
-
+        val textViewTheme = findViewById<TextView>(R.id.textView)
         val txtHint = findViewById<TextView>(R.id.textViewHint)
 
+        textViewTheme.text = resources.getString(R.string.app_theme)
         txtHint.text = resources.getString(R.string.hint)
         var names = resources.getStringArray(R.array.breeds);
         var descriptions = resources.getStringArray(R.array.descriptions);
         if(language == "fr")
         {
+            textViewTheme.text = resources.getString(R.string.app_theme_fr)
             txtHint.text = resources.getString(R.string.hint_fr)
             names = resources.getStringArray(R.array.breeds_fr)
             descriptions = resources.getStringArray(R.array.descriptions_fr);
