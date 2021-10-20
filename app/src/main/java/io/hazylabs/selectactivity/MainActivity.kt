@@ -56,10 +56,6 @@ class SelectActivity : AppCompatActivity() {
         val onClickListener = View.OnClickListener {
             val index = recyclerView.getChildAdapterPosition(it)
             val selectedImage = items[index];
-            val displayActivity = DisplayActivity()
-            val intent = Intent(this, DisplayActivity::class.java)
-            intent.putExtra("extra_image", selectedImage as java.io.Serializable);
-            startActivity(intent)
 
         }
 
