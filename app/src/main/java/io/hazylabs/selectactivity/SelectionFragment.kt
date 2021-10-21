@@ -18,6 +18,7 @@ private const val ARG_PARAM1 = "items"
 class SelectionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: ArrayList<ImageObject>? = null
+    private lateinit var viewModel: ImageViewModel
     private lateinit var recycle: RecyclerView
     private lateinit var layout: View
 
@@ -40,16 +41,23 @@ class SelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recycle = layout.findViewById<RecyclerView>(R.id.recyclerView)
+        viewModel = ViewModelProvider(requireActivity()).get(ImageViewModel::class.java)
 
+        recycle = layout.findViewById<RecyclerView>(R.id.recyclerView)
         recycle.layoutManager = GridLayoutManager(layout.context, 3)
 
         val onClickListener = View.OnClickListener {
             val index = recycle.getChildAdapterPosition(it)
             val selectedImage = param1!![index];
+            val description = (selectedImage.description)
+            val image = (selectedImage.id)
+            //Toast.makeText(layout.context, mangaData[position]!!.description, Toast.LENGTH_LONG).show()
+            viewModel.description(description)
+            viewModel.image(image)
         }
-
         recycle.adapter = ImageAdapter(param1!!, onClickListener)
+
+
     }
     companion object
     {
