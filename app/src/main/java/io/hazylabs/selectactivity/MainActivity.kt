@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 import kotlin.collections.ArrayList
 
+public lateinit var selectionFragment: SelectionFragment
+public lateinit var displayFragment: DisplayFragment
 val ids: IntArray = intArrayOf(  R.drawable.australian,
     R.drawable.blackretriever,
     R.drawable.chow,
@@ -27,25 +29,26 @@ class SelectActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         var language = Locale.getDefault().getLanguage()
-        val textViewTheme = findViewById<TextView>(R.id.textView)
-        val txtHint = findViewById<TextView>(R.id.textViewHint)
 
-        textViewTheme.text = resources.getString(R.string.app_theme)
-        txtHint.text = resources.getString(R.string.hint)
         var names = resources.getStringArray(R.array.breeds);
         var descriptions = resources.getStringArray(R.array.descriptions);
-        if(language == "fr")
-        {
-            textViewTheme.text = resources.getString(R.string.app_theme_fr)
-            txtHint.text = resources.getString(R.string.hint_fr)
-            names = resources.getStringArray(R.array.breeds_fr)
-            descriptions = resources.getStringArray(R.array.descriptions_fr);
-            supportActionBar!!.title = resources.getString(R.string.app_name_fr)
-        }
         var items: ArrayList<ImageObject> = ArrayList()
         for (i in ids.indices) {
             var item = ImageObject(ids[i], names[i], descriptions[i])
             items.add(item);
         }
+        selectionFragment = SelectionFragment.newInstance(items)
+        displayFragment = DisplayFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container1, selectionFragment)
+            .add(R.id.container2,displayFragment)
+            .commit()
+
+    }
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
     }
 }
