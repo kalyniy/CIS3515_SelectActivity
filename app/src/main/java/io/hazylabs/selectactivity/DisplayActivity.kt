@@ -12,14 +12,15 @@ class DisplayActivity() : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_display)
 
-
         val imageObject: ImageObject = intent.extras!!.get("extra_image") as ImageObject
         val name = imageObject.name
+        supportActionBar!!.title = name
         val description = imageObject.description
         val imageView = findViewById<ImageView>(R.id.displayImageView)
         val textView = findViewById<TextView>(R.id.displayTextView)
         textView.setText(description)
         imageView.setImageResource(imageObject.id)
     }
+
 }
 

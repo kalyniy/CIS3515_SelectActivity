@@ -1,15 +1,32 @@
 <resources>
     <string name="app_name">Dog Image Viewer App</string>
+    <string name="app_name_fr">Application de visualisation d\'images de chien</string>
+    <string name="app_theme">Dog Breeds</string>
+    <string name="app_theme_fr">Races de chiens</string>
+    <string name= "hint">Click an image below to view</string>
+    <string name= "hint_fr">Cliquez sur une image ci dessous pour voir</string>
     <string-array name="breeds">
         <item>Australian Shepherd</item>
         <item>Retriever flat-coated</item>
         <item>Chow-Chow</item>
         <item>Corgi</item>
         <item>Eskimo</item>
-        <item>Golden Retrieve</item>
+        <item>Golden Retriever</item>
         <item>Husky</item>
         <item>Saluki</item>
         <item>Samoyed</item>
+        <item>Shiba</item>
+    </string-array>
+    <string-array name="breeds_fr">
+        <item>Berger australien</item>
+        <item>Retriever à poil plat</item>
+        <item>Chow Chow</item>
+        <item>Corgi</item>
+        <item>Esquimau</item>
+        <item>Golden retriever</item>
+        <item>Husky</item>
+        <item>Sloughi</item>
+        <item>Samoyède</item>
         <item>Shiba</item>
     </string-array>
     <string-array name="descriptions">
@@ -23,5 +40,17 @@
         <item>Utterly cute and innocent.</item>
         <item>A natural cuddle bag.</item>
         <item>Small but mighty.</item>
+    </string-array>
+    <string-array name="descriptions_fr">
+        <item>Un ouvrier de taille moyenne avec un regard perçant et pénétrant dans les yeux.</item>
+        <item>D\'humeur égale, intelligent et affectueux.</item>
+        <item>Le lion des chiens.</item>
+        <item>Un tapis de confort avec un battement de coeur.</item>
+        <item>On dirait un loup.</item>
+        <item>Boule de poils de bonheur.</item>
+        <item>Chanteur talentueux.</item>
+        <item>Tout à fait mignon et innocent.</item>
+        <item>Un sac câlin naturel.</item>
+        <item>Petit mais puissant.</item>
     </string-array>
 </resources>

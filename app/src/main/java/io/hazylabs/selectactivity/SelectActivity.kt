@@ -9,6 +9,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
+import kotlin.collections.ArrayList
 
 val ids: IntArray = intArrayOf(  R.drawable.australian,
     R.drawable.blackretriever,
@@ -24,9 +26,22 @@ class SelectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var language = Locale.getDefault().getLanguage()
+        val textViewTheme = findViewById<TextView>(R.id.textView)
+        val txtHint = findViewById<TextView>(R.id.textViewHint)
+
+        textViewTheme.text = resources.getString(R.string.app_theme)
+        txtHint.text = resources.getString(R.string.hint)
         var names = resources.getStringArray(R.array.breeds);
         var descriptions = resources.getStringArray(R.array.descriptions);
-
+        if(language == "fr")
+        {
+            textViewTheme.text = resources.getString(R.string.app_theme_fr)
+            txtHint.text = resources.getString(R.string.hint_fr)
+            names = resources.getStringArray(R.array.breeds_fr)
+            descriptions = resources.getStringArray(R.array.descriptions_fr);
+            supportActionBar!!.title = resources.getString(R.string.app_name_fr)
+        }
         var items: ArrayList<ImageObject> = ArrayList()
         for (i in ids.indices) {
             var item = ImageObject(ids[i], names[i], descriptions[i])
@@ -34,7 +49,6 @@ class SelectActivity : AppCompatActivity() {
         }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val imageView = findViewById<ImageView>(R.id.imageView)
         val textView = findViewById<TextView>(R.id.textView)
 
         recyclerView.layoutManager = GridLayoutManager(this, 3)
@@ -46,10 +60,7 @@ class SelectActivity : AppCompatActivity() {
             val intent = Intent(this, DisplayActivity::class.java)
             intent.putExtra("extra_image", selectedImage as java.io.Serializable);
             startActivity(intent)
-            /*
-            imageView.setImageResource(items[itemPosition].id)
-            textView.text = items[itemPosition].description
-            */
+
         }
 
         recyclerView.adapter = ImageAdapter(items, onClickListener)
