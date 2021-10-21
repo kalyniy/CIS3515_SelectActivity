@@ -13,18 +13,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "items"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SelectionFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+private const val ARG_PARAM1 = "items"
 class SelectionFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: ArrayList<ImageObject>? = null
+    private lateinit var recycle: RecyclerView
+    private lateinit var layout: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,19 +33,26 @@ class SelectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_selection, container, false)
+        layout =  inflater.inflate(R.layout.fragment_selection, container, false)
+        return layout
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SelectionFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recycle = layout.findViewById<RecyclerView>(R.id.recyclerView)
+
+        recycle.layoutManager = GridLayoutManager(layout.context, 3)
+
+        val onClickListener = View.OnClickListener {
+            val index = recycle.getChildAdapterPosition(it)
+            val selectedImage = param1!![index];
+        }
+
+        recycle.adapter = ImageAdapter(param1!!, onClickListener)
+    }
+    companion object
+    {
         @JvmStatic
         fun newInstance(param1: ArrayList<ImageObject>) =
             SelectionFragment().apply {
